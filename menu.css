@@ -1,31 +1,43 @@
 *{
     margin: 0px;
     padding: 0px;
+    font-family: sans-serif;
 }
 
-div#menu{
+#title{
+  color:#BB0000;
+  font-size: 3em;
+}
+
+#cuerpo{
+  padding: 0 3% 0 3%;
+}
+
+#menu{
     width: 400px;
-    margin-top: 50px;
+    margin-top: 60px;
 }
 
-div#menu ul{
+#menu{
     list-style: none;
 }
 
-div#menu ul li {
+#menu a {
     margin-top: 15px;
     font-family: Arial;
     font-size: 30px;
-    background-color: #E90F0F;
+    background-color: #BB0000;
+    display: block;
     width: 400px;
     padding-top: 10px;
     padding-bottom: 10px;
     border-radius: 0px 20px 20px 0px;
     padding-left: 20px;
     box-shadow: 5px 0px 10px #939393;
+    color:#fff;
 }
 
-div#menu ul li: hover{
+#menu a :hover{
   padding-left: 50px;
 }
 
@@ -38,22 +50,47 @@ header{
   height: 50px;
 }
 
-header nav#banco a{
-  color: white;
+#banco a{
+  color: #FFF;
   font-size: 20px;
   line-height: 40px;
   float: left;
 }
 
-header nav#info{
+#info{
    float: right;
    line-height: 40px;
 }
-header nav#info a{
+
+#info a{
   display: inline-block;
   color: white;
   padding: 10px 20px;
   font-size: 20px;
   line-height: normal;
   font-weight: blood;
+}
+
+div#informacion {
+    position: relative;
+    top: -250px;
+    bottom: 0px;
+    right: 0px;
+    left: 500px;
+    border: 3px solid black;
+    width: 600px;
+    height: 300px;
+    display: inline-block;
+}
+
+div#informacion a{
+  display: block;
+  color: black;
+  margin: auto;
+  font-size: 30px;
+}
+div#informacion li{
+   display: block;
+   font-size: 20px;
+   margin: auto;
 }
