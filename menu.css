@@ -82,15 +82,3 @@ div#informacion {
     height: 300px;
     display: inline-block;
 }
-
-div#informacion a{
-  display: block;
-  color: black;
-  margin: auto;
-  font-size: 30px;
-}
-div#informacion li{
-   display: block;
-   font-size: 20px;
-   margin: auto;
-}
