@@ -15,14 +15,40 @@
     width: 700px;
     height: 500px;
   }
-  div#bancos button#buscar{
-    float: right;
+  div#bancos select{
+     width: 300px;
+
   }
+  div#bancos button#buscar{
+     width: 150px;
+     float: right;
+  }
+  div#bancos button#solicitar{
+     width: 150px;
+     position: relative;
+     left: 250px;
+  }
+  table#tabla{
+    width: 600px;
+    height: 300px;
+    position: relative;
+    left: 20px;
+    top: 10px;
+  }
+  textarea{
+     border: 3px solid black;
+    position: relative;
+    left: 100px;
+   }
   </style>
   <script type="text/javascript">
   function llamar(){
     var resultado = document.getElementById('seleccion').value;
-    document.getElementById('exit').value = resultado;
+    document.getElementById('exit').innerHTML = resultado;
+  }
+  function clean(){
+    document.getElementById('textarea').innerHTML=resultado;
+
   }
   </script>
 </head>
@@ -53,10 +79,36 @@
         <option> las americas</option>
         <option> las venturass</option>
       </select>
-      <button type="button" name="buscar" onclick="llamar()">BUSCAR</button>
-      <input type="text" id="exit" name = "exit" value="" readonly>
-    </div>
+      <button type="button" id="buscar" onclick="llamar()">BUSCAR</button>
 
-  </section>
+      <table id="tabla" border="2px">
+        <tr>
+          <td>chek</td> <td>tipo</td><td>cantidad</td>
+        </tr>
+        <tr>
+          <td><input type="text" name="" value=""></td><td>A+</td><td id="exit" value ="ssdsas"></td>
+        </tr>
+        <tr>
+          <td></td><td>A-</td><td>50u</td>
+        </tr>
+        <tr>
+          <td></td><td>O+</td><td>20u</td>
+        </tr>
+        <tr>
+          <td></td><td>O-</td><td>40u</td>
+        </tr>
+        <tr>
+          <td></td><td>AB+</td><td>10u</td>
+        </tr>
+        <tr>
+          <td></td><td>AB-</td><td>70u</td>
+        </tr>
+      </table>
+      <br>
+      <textarea name="textArea" id="textArea" rows="8" cols="80">mensaje..</textarea>
+      <br>
+      <button type="button" id="solicitar"> solicitar </button>
+    </div>
+        </section>
 </body>
 </html>
