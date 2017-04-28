@@ -1,4 +1,4 @@
-var bancoSangre = mongoose.Schema({
+var bancoSangre = ({
 	idbanco: Number,
 	nombre: String,
 	localizacion: [{
@@ -10,7 +10,7 @@ var bancoSangre = mongoose.Schema({
 	encargado: String,
 	tipo_de_sangre: [{
 		tipo_de_sangre: String,
-		cantidad: number
+		cantidad: Number
 	    }],
 	alerta: [{
 		solicitante: String,
@@ -26,3 +26,4 @@ var bancoSangre = mongoose.Schema({
 	    }]
 
     });
+

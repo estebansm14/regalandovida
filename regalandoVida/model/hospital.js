@@ -1,5 +1,4 @@
-var hospital = mongoose.Schema({
-	i
+var hospital = ({
 idhospitales: Number,
 	nombre: String,
 	localizacion: [{

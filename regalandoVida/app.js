@@ -6,12 +6,24 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var mongoose = require("mongoose");
+var bancoSangreDB = require('./model/bancoSangre.js');
+var hospitalDB = require('./model/hospital.js');
+var usuarioDB = require('./model/usuario.js');
 mongoose.connect('mongodb://localhost:27017');
+
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function(){
-	console.log("Conexion Base de Datos");
+db.once('open', function() {
+	console.log("Conectado Base Datos");
     });
+
+//var Schema = mongoose.Schema;
+var banco = mongoose.model('banco', bancoSangreDB);
+var hospital = mongoose.model('hospital', hospitalDB);
+var usuario = mongoose.model('usuario', usuarioDB);
+//var silence = new banco({ name: 'Silence' });
+//console.log(silence.name);   
+
 
 var index = require('./routes/index');
 var users = require('./routes/users');
