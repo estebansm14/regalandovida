@@ -1,0 +1,12 @@
+#tablas{
+  width: 600px;
+   position: relative;
+   top: -300px;
+   left: 500px;
+}
+
+#guardar{
+  position: relative;
+  left: 700px;
+  top: -280px;
+}

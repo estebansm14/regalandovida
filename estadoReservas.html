@@ -3,7 +3,21 @@
 <head>
   <meta charset="utf-8">
   <title> Estado Reservas</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="menu.css" type="text/css">
+  <link rel="stylesheet" href="estadoreservas.css">
+  <script type="text/javascript">
+    function alerta(){
+      var Ap = document.getElementById('A+').value;
+      var An = document.getElementById('A-').value;
+      var Op = document.getElementById('O+').value;
+      var On = document.getElementById('O-').value;
+      var ABp = document.getElementById('AB+').value;
+      var ABn = document.getElementById('AB-').value;
+      alert("se a cambiaron los valores de A+ por" + Ap)
+    }
+  </script>
 </head>
 <body>
   <header>
@@ -26,5 +40,44 @@
     <a href="Buscar_banco.html">Contactar Banco De Sangre</a>
     <a href="solicitudes.html">Solicitudes</a>
   </nav>
+  <table class="table table-striped" border="2px" id="tablas">
+      <tr>
+        <td>Tipo de Sangre</td>
+        <td> cantidad</td>
+        <td> editar</td>
+      </tr>
+      <tr>
+        <td>A+</td>
+        <td></td>
+        <td><input type="text" id="A+"></td>
+      </tr>
+      <tr>
+        <td>A-</td>
+        <td></td>
+        <td><input type="text" id="A-"></td>
+      </tr>
+      <tr>
+        <td>O+</td>
+        <td></td>
+        <td><input type="text" id="O+"></td>
+      </tr>
+      <tr>
+        <td>O-</td>
+        <td></td>
+        <td><input type="text" id="O-"></td>
+      </tr>
+      <tr>
+        <td>AB+</td>
+        <td></td>
+        <td><input type="text" id="AB+"></td>
+      </tr>
+      <tr>
+        <td>AB-</td>
+        <td></td>
+        <td><input type="text" id="AB-"></td>
+      </tr>
+  </table>
+  <button type="button" class="btn btn-default btn-lg active" id="guardar" onclick="alerta();">Guardar Cambios</button>
+</div>
 </body>
 </html>
