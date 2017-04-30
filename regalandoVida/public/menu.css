@@ -23,6 +23,7 @@
 }
 
 #menu a {
+   text-decoration: none;
     margin-top: 15px;
     font-family: Arial;
     font-size: 30px;

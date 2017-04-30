@@ -3,17 +3,18 @@
 <head>
   <meta charset="utf-8">
   <title>Buscar bancos</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="menu.css" type="text/css">
   <style type = "text/css">
   div#bancos{
     position: relative;
-    top: -250px;
+    top: -350px;
     bottom: 0px;
     right: 0px;
     left: 500px;
     border: 3px solid black;
     width: 700px;
-    height: 500px;
+    height: 600px;
   }
   div#bancos select{
      width: 300px;
@@ -27,6 +28,7 @@
      width: 150px;
      position: relative;
      left: 250px;
+     top: 10px;
   }
   table#tabla{
     width: 600px;
@@ -36,7 +38,7 @@
     top: 10px;
   }
   textarea{
-     border: 3px solid black;
+    border: 3px solid black;
     position: relative;
     left: 100px;
    }
@@ -46,9 +48,12 @@
     var resultado = document.getElementById('seleccion').value;
     document.getElementById('exit').innerHTML = resultado;
   }
-  function clean(){
-    document.getElementById('textarea').innerHTML=resultado;
-
+  function limpiar(){
+    document.getElementById('textArea').innerHTML="";
+  }
+  function mensaje(){
+    var texto = document.getElementById('textArea').value;
+    alert(texto);
   }
   </script>
 </head>
@@ -81,33 +86,33 @@
       </select>
       <button type="button" id="buscar" onclick="llamar()">BUSCAR</button>
 
-      <table id="tabla" border="2px">
+      <table id="tabla" border="2px" class="table table-striped">
         <tr>
           <td>chek</td> <td>tipo</td><td>cantidad</td>
         </tr>
         <tr>
-          <td><input type="text" name="" value=""></td><td>A+</td><td id="exit" value ="ssdsas"></td>
+          <td></td><td>A+</td><td id="cA+"></td>
         </tr>
         <tr>
-          <td></td><td>A-</td><td>50u</td>
+          <td></td><td>A-</td><td id="cA-"></td>
         </tr>
         <tr>
-          <td></td><td>O+</td><td>20u</td>
+          <td></td><td>O+</td><td id="cO+"></td>
         </tr>
         <tr>
-          <td></td><td>O-</td><td>40u</td>
+          <td></td><td>O-</td><td id="cO-"></td>
         </tr>
         <tr>
-          <td></td><td>AB+</td><td>10u</td>
+          <td></td><td>AB+</td><td id="cAB+"></td>
         </tr>
         <tr>
-          <td></td><td>AB-</td><td>70u</td>
+          <td></td><td>AB-</td><td id="cAB-"></td>
         </tr>
       </table>
       <br>
-      <textarea name="textArea" id="textArea" rows="8" cols="80">mensaje..</textarea>
+      <textarea name="textArea" id="textArea" rows="8" cols="80" onclick="limpiar();">mensaje..</textarea>
       <br>
-      <button type="button" id="solicitar"> solicitar </button>
+      <button type="button" id="solicitar" onclick="mensaje();"> solicitar </button>
     </div>
         </section>
 </body>
