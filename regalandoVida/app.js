@@ -4,26 +4,27 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
 var mongoose = require("mongoose");
-var bancoSangreDB = require('./model/bancoSangre.js');
-var hospitalDB = require('./model/hospital.js');
-var usuarioDB = require('./model/usuario.js');
-mongoose.connect('mongodb://localhost:27017');
+
+var bancoSangre = require('./model/bancoSangre').bancoSangre;
+var hospital = require('./model/hospital').hospital;
+var usuario = require('./model/usuario').usuario;
+
+//var Schema = mongoose.Schema;
+//var banco = mongoose.model('banco', bancoSangreDB);
+//var hospital = mongoose.model('hospital', hospitalDB);
+//var usuario = mongoose.model('usuario', usuarioDB);
+//var silence = new banco({ name: 'Silence' });
+//console.log(silence.name);   
+
+var mongodbUri = 'mongodb://infobanco:usuario123@ds119081.mlab.com:19081/regalandovida';
+mongoose.connect(mongodbUri);
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-	console.log("Conectado Base Datos");
-    });
-
-//var Schema = mongoose.Schema;
-var banco = mongoose.model('banco', bancoSangreDB);
-var hospital = mongoose.model('hospital', hospitalDB);
-var usuario = mongoose.model('usuario', usuarioDB);
-//var silence = new banco({ name: 'Silence' });
-//console.log(silence.name);   
-
+    console.log("Conectado Base Datos");
+});
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -47,20 +48,20 @@ app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
 });
 
 // error handler
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+    // render the error page
+    res.status(err.status || 500);
+    res.render('error');
 });
 
 module.exports = app;
