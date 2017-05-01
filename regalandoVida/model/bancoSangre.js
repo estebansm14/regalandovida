@@ -5,6 +5,7 @@ var Schema = mongoose.Schema;
 
 var bancoSangre_schema = new Schema({
     nombre: String,
+    idbanco: String,
     localizacion: [{
 	pais: String,
 	departamento: String,

@@ -17,8 +17,8 @@ var usuario = require('./model/usuario').usuario;
 //var silence = new banco({ name: 'Silence' });
 //console.log(silence.name);   
 
-//var mongodbUri = 'mongodb://infobanco:usuario123@ds119081.mlab.com:19081/regalandovida';
-var mongodbUri = 'mongodb://localhost:27017';
+var mongodbUri = 'mongodb://infobanco:usuario123@ds119081.mlab.com:19081/regalandovida';
+//var mongodbUri = 'mongodb://localhost:27017';
 mongoose.connect(mongodbUri);
 
 var db = mongoose.connection;

@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 //mongoose.connect("mongodb://localhost/RegalandoVida");
 
 var usuario_schema = new Schema({
-    idusuario: Number,
+    idusuario: String,
     nombre: String,
     telefono: String,
     nacionalidad: ({

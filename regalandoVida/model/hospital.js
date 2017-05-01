@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 //mongoose.connect("mongodb://localhost/RegalandoVida");
 
 var hospital_schema = new Schema({
-    idhospitales: Number,
+    idhospitales: String,
     nombre: String,
     localizacion: [{
   	país: String,
