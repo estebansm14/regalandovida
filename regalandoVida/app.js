@@ -5,11 +5,12 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require("mongoose");
-
+mongoose.Promise = global.Promise;
 var bancoSangre = require('./model/bancoSangre').bancoSangre;
-var hospital = require('./model/hospital').hospital;
-var usuario = require('./model/usuario').usuario;
+//var hospital = require('./model/hospital').hospital;
+//var usuario = require('./model/usuario').usuario;
 
+var app = express();
 //var Schema = mongoose.Schema;
 //var banco = mongoose.model('banco', bancoSangreDB);
 //var hospital = mongoose.model('hospital', hospitalDB);
@@ -17,20 +18,48 @@ var usuario = require('./model/usuario').usuario;
 //var silence = new banco({ name: 'Silence' });
 //console.log(silence.name);   
 
-var mongodbUri = 'mongodb://infobanco:usuario123@ds119081.mlab.com:19081/regalandovida';
-//var mongodbUri = 'mongodb://localhost:27017';
-mongoose.connect(mongodbUri);
-
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-    console.log("Conectado Base Datos");
+/* var nose = new bancoSangre({
+ *     idbanco: "bCruzRoja",
+ *     nombre: "Banco de Sangre Cruz Roja",
+ *     localizacion: ({
+ * 	pais: "Colombia",
+ * 	departamento: "Antioquia",
+ * 	ciudad: "Medellin",
+ * 	direccion: "Calle 74 # 12 65"
+ *     }),
+ *     encargado: "Dra. Erminia",
+ *     telefono: "9846352",
+ *     tipo_de_sangre: ({
+ * 	Amas: 940,
+ * 	Amenos: 700,
+ * 	Omas: 100,
+ * 	Omenos: 920,
+ * 	ABmas: 730,
+ *  	ABmenos: 450
+ *     })
+ * });*/
+/* nose.save(function(err,user,numero){
+ *     if(err){
+ *  	console.log(String(err));
+ *     }
+ *     console.log("DB Datos guardados");
+ * });
+ * */
+bancoSangre.find({},function(err,docs){
+    console.log(docs);
+    console.log("Aqui")
 });
 
+/* app.post("/api/menuBanco", function(req,res){
+ *     //bancoSangre.find({nombre:"Banco de Sangre Las Americas",idbanco:"bAmericas"},function(err,docs){
+ *     bancoSangre.find({},function(err,docs){
+ * 	console.log(docs);
+ * 	res.send("Hola Mundo");
+ *     });
+ * });
+ * */
 var index = require('./routes/index');
 var users = require('./routes/users');
-
-var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -66,3 +95,16 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+var mongodbUri = 'mongodb://infobanco:usuario123@ds119081.mlab.com:19081/regalandovida';
+//var mongodbUri = 'mongodb://localhost:27017';
+mongoose.connect(mongodbUri, function(err){
+    if(err){
+	console.error('Can\'t connect to MongoDB')
+	return err;
+    }
+    console.log("MongoDB connected");
+});
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));

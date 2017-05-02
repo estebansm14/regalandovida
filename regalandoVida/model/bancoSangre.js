@@ -4,18 +4,23 @@ var Schema = mongoose.Schema;
 //mongoose.connect("mongodb://localhost/RegalandoVida");
 
 var bancoSangre_schema = new Schema({
-    nombre: String,
     idbanco: String,
-    localizacion: [{
+    nombre: String,
+    localizacion: ({
 	pais: String,
 	departamento: String,
 	ciudad: String,
 	direccion: String
-    }] ,
+    }),
     encargado: String,
-    tipo_de_sangre: new Schema ({
-	tipo_de_sangre: String,
-	cantidad: Number
+    telefono: String,
+    tipo_de_sangre: ({
+	Amas: Number,
+	Amenos: Number,
+	Omas: Number,
+	Omenos: Number,
+	ABmas: Number,
+	ABmenos: Number
     }),
     alerta: new Schema ({
 	solicitante: String,
