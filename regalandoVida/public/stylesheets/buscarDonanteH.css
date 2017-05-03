@@ -1,0 +1,18 @@
+#donantes{
+   position: relative;
+   top: -250px;
+   left: 500px;
+   border: 2px solid black;
+   height: 400px;
+   width: 500px;
+}
+#donantes select#tipos_sangre{
+   background-color: #cce6ff;
+   font-size: 10px;
+   width: 150px;
+   height: 20px;
+}
+#buscar{
+  float:  right;
+  width: 160px;
+}

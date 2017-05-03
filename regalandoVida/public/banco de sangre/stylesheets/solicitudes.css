@@ -1,0 +1,9 @@
+#solicitudes{
+  width: 600px;
+  position: relative;
+  top: -350px;
+  left: 500px;
+}
+panel-body{
+  height: 300px;
+}
