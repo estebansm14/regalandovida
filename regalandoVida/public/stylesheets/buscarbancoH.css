@@ -3,8 +3,9 @@
   top: -250px;
   left: 500px;
   border: 3px ;
-  width: 500px;
-  height: 400px;
+  width: 400px;
+  height: 40px;
+  border: 2px solid black;
 }
 
 #nbancos{
@@ -17,4 +18,29 @@
   width: 150px;
   background-color: #cce6ff;
   float: right;
+}
+
+#info_banco{
+   position: relative;
+   left: 450px;
+   top: -220px;
+   border: 2px solid black;
+   width: 300px;
+   height: 300px;
+}
+#info_banco a{
+  text-decoration: none;
+  color: red;
+}
+#info_banco #nombre_banco{
+  font-size: 20px;
+  text-decoration: none;
+}
+#tabla_tipos{
+  position: relative;
+  top: -520px;
+  left: 790px;
+  border: 2px solid black;
+  width: 400px;
+  height: 300px;
 }
