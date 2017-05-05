@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="buscar_donante_Angular">
+<head>
+  <meta charset="utf-8">
+  <title>buscar donante</title>
+  <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
+  <link rel="stylesheet" href="stylesheets/menu.css" type="text/css">
+  <link rel="stylesheet" href="stylesheets/buscarDonante.css">
+  <script>
+     function llamar(){
+        var tipo = document.getElementById("tipo").value;
+        if (tipo == "A+"){
+           document.getElementById("nombre1").innerHTML = "ernesto";
+        }
+        if (tipo == "A-") {
+          document.getElementById("nombre1").innerHTML = "gustavo";
+        }
+        if (tipo == "O-") {
+          document.getElementById("nombre1").innerHTML = "adolfo";
+        }
+     }
+  </script>
+</head>
+<body ng-controller="controlador">
+  <header>
+    <nav id="banco">
+      <a>Banco de sangre</a>
+    </nav>
+    <nav id="info">
+      <a> Cl&iacute;nica las americas</a>
+      <a>  menu </a>
+    </nav>
+  </header>
+  <h3 id="title">
+    BUSCAR DONANTES
+  </h3>
+  <img src = "logo.png" height="200" alt="300" style="float:right"/>
+  <nav id="menu">
+    <a href="menuBanco.html">Perfil</a>
+    <a href="estadoReservas.html">Estado Reservas</a>
+    <a href="buscarDonante.html">Buscar Donantes</a>
+    <a href="Buscar_banco.html">Contactar Banco De Sangre</a>
+    <a href="solicitudes.html">Solicitudes</a>
+  </nav>
+  <div id="donantes">
+    <select class=""  id="tipo">
+       <option>A+</option>
+       <option>A-</option>
+       <option>B+</option>
+       <option>B-</option>
+       <option>O+</option>
+       <option>O-</option>
+       <option>AB+</option>
+       <option>AB-</option>
+     </select>
+     <button type="button" name="button" onclick="llamar();" id="buscar">BUSCAR</button>
+     <table border="2px" id="tabla" class="table">
+       <tr>
+         <td id="nombre1"></td>
+         <td></td>
+       </tr>
+       <tr>
+         <td></td>
+         <td></td>
+       </tr>
+       <tr>
+         <td></td>
+         <td></td>
+       </tr>
+       <tr>
+         <td></td>
+         <td></td>
+       </tr>
+       <tr>
+         <td></td>
+         <td></td>
+       </tr>
+     </table>
+   </body>
+   </html>
