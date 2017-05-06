@@ -61,10 +61,10 @@ bancoSangre.find({},function(err,docs){
 var index = require('./routes/index');
 var users = require('./routes/users');
 var banSangre = require('./routes/banSangre');
-var hospit = require('./routes/hospital.js');
+var hospit = require('./routes/hospital');
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+//app.set('views', path.join(__dirname, 'views'));
+//app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -73,6 +73,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/banSangre', express.static(path.join(__dirname, 'public')));
+app.use('/hospital', express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
