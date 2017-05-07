@@ -6,22 +6,22 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "@angular/common": "latest",
+    "@angular/compiler": "latest",
+    "@angular/core": "latest",
+    "@angular/http": "latest",
+    "@angular/platform-browser": "latest",
+    "@angular/platform-browser-dynamic": "latest",
+    "@angular/router": "latest",
+    "@angular/upgrade": "latest",
+    "angular2": "2.0.0-beta.21",
     "body-parser": "~1.17.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
     "express": "~4.15.2",
     "jade": "~1.11.0",
-    "morgan": "~1.8.1",
-    "serve-favicon": "~2.4.2",
     "mongoose": "latest",
-    "@angular/core": "latest",
-    "@angular/common": "latest",
-    "@angular/compiler": "latest",
-    "@angular/platform-browser": "latest",
-    "@angular/platform-browser-dynamic": "latest",
-    "@angular/http": "latest",
-    "@angular/router": "latest",
-    "@angular/upgrade": "latest"
-    
+    "morgan": "~1.8.1",
+    "serve-favicon": "~2.4.2"
   }
 }
