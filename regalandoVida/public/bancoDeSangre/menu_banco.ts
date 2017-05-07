@@ -1,7 +1,10 @@
-angular.module('menu_banco_Angular', []);
+import { Component } from '@angular/core';
 
-function controlador(){
+@Component({
+  selector: 'menu_banco_Angular',
+  templateUrl: 'build/public/bancoDeSangre/menuBanco.html'
+})
 
-
+export class encargado{
 
 }
