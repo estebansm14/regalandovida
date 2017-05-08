@@ -1,50 +1,74 @@
 var express = require('express');
+var app = express();
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require("mongoose");
-mongoose.Promise = global.Promise;
+//mongoose.Promise = global.Promise;
 var bancoSangre = require('./model/bancoSangre').bancoSangre;
 //var hospital = require('./model/hospital').hospital;
 //var usuario = require('./model/usuario').usuario;
 
-var app = express();
-//var Schema = mongoose.Schema;
-//var banco = mongoose.model('banco', bancoSangreDB);
-//var hospital = mongoose.model('hospital', hospitalDB);
-//var usuario = mongoose.model('usuario', usuarioDB);
-//var silence = new banco({ name: 'Silence' });
-//console.log(silence.name);   
+app.get("/", function(req,res){
+    console.log("Inicio Ruta Raiz");
+    res.send("Ruta raiz");
+});
 
-/* var nose = new bancoSangre({
- *     idbanco: "bCruzRoja",
- *     nombre: "Banco de Sangre Cruz Roja",
- *     localizacion: ({
- * 	pais: "Colombia",
- * 	departamento: "Antioquia",
- * 	ciudad: "Medellin",
- * 	direccion: "Calle 74 # 12 65"
- *     }),
- *     encargado: "Dra. Erminia",
- *     telefono: "9846352",
- *     tipo_de_sangre: ({
- * 	Amas: 940,
- * 	Amenos: 700,
- * 	Omas: 100,
- * 	Omenos: 920,
- * 	ABmas: 730,
- *  	ABmenos: 450
- *     })
- * });*/
-/* nose.save(function(err,user,numero){
- *     if(err){
- *  	console.log(String(err));
- *     }
- *     console.log("DB Datos guardados");
- * });
- * */
+app.get("/api/menuBanco", function(req,res){
+    bancoSangre.find({idbanco:"bClinicaAmericas"},"encargado telefono localizacion.direccion",function(err,docs){
+	console.log("Consulta Informacion Banco Sangre\n");
+	console.log(docs);
+	res.json(docs);
+	//docs.telefono = "1111111";
+    });
+});
+
+app.get("/api/estadoReserva", function(req,res){
+    bancoSangre.find({idbanco:"bClinicaAmericas"},"tipo_de_sangre",function(err,docs){
+	console.log("Consulta Estado Reservas Sangre\n");
+	console.log(docs);
+	res.json(docs);
+    });
+});
+app.post("/estadoReserva/:id", function(req,res){
+    //var yourModel = req.body;
+    //console.log("Consulta: " + yourModel);
+    res.json(yourModel)
+
+});
+
+app.get("/api/buscarBanco", function(req,res){
+    bancoSangre.find({idbanco:"bClinicaAmericas"},"tipo_de_sangre",function(err,docs){
+	console.log("Consulta Estado Reserva Sangre Banco\n");
+	console.log(docs);
+	res.json(docs);
+    });
+});
+
+app.get("/api/solicitudesBanco", function(req,res){
+    bancoSangre.find({idbanco:"bClinicaAmericas"},"solicitudes_banco",function(err,docs){
+	console.log("Consulta Estado Reserva Sangre Banco\n");
+	console.log(docs);
+	res.json(docs);
+    });
+});
+
+app.post("/Peticion", function(req,res){
+    var yourModel = req.body;
+    console.log("Consulta: " + yourModel);
+    res.json(yourModel)
+
+});
+
+app.post("/Imprimir", function(req,res){
+    bancoSangre.find({idbanco:req.body.encargado},function(err,docs){
+	//console.log(req.query.encargado);
+	console.log("Consulta: " + req.body.encargado);
+	res.send(docs);
+    });
+});
 bancoSangre.find({},function(err,docs){
     console.log(docs);
     console.log("Aqui")
@@ -104,7 +128,7 @@ var mongodbUri = 'mongodb://infobanco:usuario123@ds119081.mlab.com:19081/regalan
 //var mongodbUri = 'mongodb://localhost:27017';
 mongoose.connect(mongodbUri, function(err){
     if(err){
-	console.error('Can\'t connect to MongoDB')
+	console.error('Can\'t connect to MongoDB\n' + err)
 	return err;
     }
     console.log("MongoDB connected");
@@ -112,3 +136,39 @@ mongoose.connect(mongodbUri, function(err){
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
+
+
+//var Schema = mongoose.Schema;
+//var banco = mongoose.model('banco', bancoSangreDB);
+//var hospital = mongoose.model('hospital', hospitalDB);
+//var usuario = mongoose.model('usuario', usuarioDB);
+//var silence = new banco({ name: 'Silence' });
+//console.log(silence.name);   
+
+/* var nose = new bancoSangre({
+ *     idbanco: "bCruzRoja",
+ *     nombre: "Banco de Sangre Cruz Roja",
+ *     localizacion: ({
+ * 	pais: "Colombia",
+ * 	departamento: "Antioquia",
+ * 	ciudad: "Medellin",
+ * 	direccion: "Calle 74 # 12 65"
+ *     }),
+ *     encargado: "Dra. Erminia",
+ *     telefono: "9846352",
+ *     tipo_de_sangre: ({
+ * 	Amas: 940,
+ * 	Amenos: 700,
+ * 	Omas: 100,
+ * 	Omenos: 920,
+ * 	ABmas: 730,
+ *  	ABmenos: 450
+ *     })
+ * });*/
+/* nose.save(function(err,user,numero){
+ *     if(err){
+ *  	console.log(String(err));
+ *     }
+ *     console.log("DB Datos guardados");
+ * });
+ * */
