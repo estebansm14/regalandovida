@@ -11,11 +11,9 @@ var bancoSangre = require('./model/bancoSangre').bancoSangre;
 //var hospital = require('./model/hospital').hospital;
 //var usuario = require('./model/usuario').usuario;
 
-app.get("/", function(req,res){
-    console.log("Inicio Ruta Raiz");
-    res.send("Ruta raiz");
+app.get('/', function(req, res){
+    res.sendfile('./public/index.html');
 });
-
 app.get("/api/menuBanco", function(req,res){
     bancoSangre.find({idbanco:"bClinicaAmericas"},"encargado telefono localizacion.direccion",function(err,docs){
 	console.log("Consulta Informacion Banco Sangre\n");
@@ -24,7 +22,6 @@ app.get("/api/menuBanco", function(req,res){
 	//docs.telefono = "1111111";
     });
 });
-
 app.get("/api/estadoReserva", function(req,res){
     bancoSangre.find({idbanco:"bClinicaAmericas"},"tipo_de_sangre",function(err,docs){
 	console.log("Consulta Estado Reservas Sangre\n");
@@ -32,13 +29,12 @@ app.get("/api/estadoReserva", function(req,res){
 	res.json(docs);
     });
 });
-app.post("/estadoReserva/:id", function(req,res){
+app.post("/api/estadoReserva/:id", function(req,res){
     //var yourModel = req.body;
     //console.log("Consulta: " + yourModel);
     res.json(yourModel)
 
 });
-
 app.get("/api/buscarBanco", function(req,res){
     bancoSangre.find({idbanco:"bClinicaAmericas"},"tipo_de_sangre",function(err,docs){
 	console.log("Consulta Estado Reserva Sangre Banco\n");
@@ -46,7 +42,6 @@ app.get("/api/buscarBanco", function(req,res){
 	res.json(docs);
     });
 });
-
 app.get("/api/solicitudesBanco", function(req,res){
     bancoSangre.find({idbanco:"bClinicaAmericas"},"solicitudes_banco",function(err,docs){
 	console.log("Consulta Estado Reserva Sangre Banco\n");
@@ -54,14 +49,12 @@ app.get("/api/solicitudesBanco", function(req,res){
 	res.json(docs);
     });
 });
-
 app.post("/Peticion", function(req,res){
     var yourModel = req.body;
     console.log("Consulta: " + yourModel);
     res.json(yourModel)
 
 });
-
 app.post("/Imprimir", function(req,res){
     bancoSangre.find({idbanco:req.body.encargado},function(err,docs){
 	//console.log(req.query.encargado);
@@ -69,48 +62,38 @@ app.post("/Imprimir", function(req,res){
 	res.send(docs);
     });
 });
-bancoSangre.find({},function(err,docs){
-    console.log(docs);
-    console.log("Aqui")
-});
-
-/* app.post("/api/menuBanco", function(req,res){
- *     //bancoSangre.find({nombre:"Banco de Sangre Las Americas",idbanco:"bAmericas"},function(err,docs){
- *     bancoSangre.find({},function(err,docs){
- * 	console.log(docs);
- * 	res.send("Hola Mundo");
- *     });
- * });
- * */
-var index = require('./routes/index');
-var users = require('./routes/users');
-var banSangre = require('./routes/banSangre');
-var hospit = require('./routes/hospital');
+/* bancoSangre.find({},function(err,docs){
+ *     console.log(docs);
+ *     console.log("Aqui")
+ * });*/
+//var index = require('./routes/index');
+//var users = require('./routes/users');
+//var banSangre = require('./routes/banSangre');
+//var hospit = require('./routes/hospital');
 // view engine setup
 //app.set('views', path.join(__dirname, 'views'));
 //app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/banSangre', express.static(path.join(__dirname, 'public')));
-app.use('/hospital', express.static(path.join(__dirname, 'public')));
+//app.use('/banSangre', express.static(path.join(__dirname, 'public')));
+//app.use('/hospital', express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
-app.use('/users', users);
-app.use('/banSangre', banSangre);
-app.use('/hospital', hospit);
+//app.use('/', index);
+//app.use('/users', users);
+//app.use('/banSangre', banSangre);
+//app.use('/hospital', hospit);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
-
 // error handler
 app.use(function(err, req, res, next) {
     // set locals, only providing error in development
@@ -137,7 +120,14 @@ mongoose.connect(mongodbUri, function(err){
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 
-
+/* app.post("/api/menuBanco", function(req,res){
+ *     //bancoSangre.find({nombre:"Banco de Sangre Las Americas",idbanco:"bAmericas"},function(err,docs){
+ *     bancoSangre.find({},function(err,docs){
+ * 	console.log(docs);
+ * 	res.send("Hola Mundo");
+ *     });
+ * });
+ * */
 //var Schema = mongoose.Schema;
 //var banco = mongoose.model('banco', bancoSangreDB);
 //var hospital = mongoose.model('hospital', hospitalDB);
