@@ -11,7 +11,7 @@ export class menu_banco{
 
 
   public mostarNombre(){
-     this.nombre = "banco";
+     this.nombre = 'banco';
   }
 
 }
