@@ -1,10 +1,17 @@
 import { Component } from '@angular/core';
 
+
 @Component({
-  selector: 'menu_banco_Angular',
-  templateUrl: 'build/public/bancoDeSangre/menuBanco.html'
+  templateUrl: 'regalandoVida/public/bancoDeSangre/menuBanco.html',
 })
 
-export class encargado{
+
+export class menu_banco{
+  private nombre: String;
+
+
+  public mostarNombre(){
+     this.nombre = "banco";
+  }
 
 }
