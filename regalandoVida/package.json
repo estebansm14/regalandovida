@@ -22,6 +22,17 @@
     "jade": "~1.11.0",
     "mongoose": "latest",
     "morgan": "~1.8.1",
-    "serve-favicon": "~2.4.2"
-  }
+    "serve-favicon": "~2.4.2",
+    "ng-tags-input": "latest",
+    "reflect-metadata": "latest",
+    "rxjs": "latest",
+    "zone.js": "latest",
+    "angular-in-memory-web-api": "latest",
+    "angular2-tag-input": "latest"
+  },
+  "main": "app.js",
+  "devDependencies": {},
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
