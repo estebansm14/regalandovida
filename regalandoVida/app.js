@@ -27,19 +27,11 @@ app.post("/Peticion", function(req,res){
 app.get('/', function(req, res){
     res.sendfile('./public/index.html');
 });
-app.post("/api/enviarSolicitud", function(req,res){
-    console.log("\nEnviar Solicitud");
-    bancoSangre.findOneAndUpdate(
-	{nombre: req.body.receptor},{$push:{"solicitudes_banco":{tipo_de_sangre:req.body.tipo_de_sangre,mensaje:req.body.mensaje,receptor:req.body.receptor,solicitante:req.body.solicitante}}},
-	function(err,docs){
-	    res.send("Solicitud enviada");
-	});
-});
 app.get("/api/menuBanco", function(req,res){    
     //bancoSangre.find({idbanco:"bClinicaAmericas"},"encargado telefono localizacion.direccion",function(err,docs){
-    console.log("Consulta Informacion Banco Sangre\n");
+    console.log("\nConsulta Informacion Banco Sangre");
     bancoSangre.find({idbanco:req.body.idbanco},"encargado telefono localizacion.direccion",function(err,docs){
-	console.log(docs + "\n");
+	console.log(docs);
 	res.json(docs);
     });
 });
@@ -65,12 +57,20 @@ app.get("/api/buscarBanco", function(req,res){
 	res.json(docs);
     });
 });
-app.get("/api/solicitudesBanco", function(req,res){
-    console.log("Consulta Solicitudes Banco\n");
-    bancoSangre.find({idbanco:req.body.idbanco},"solicitudes_banco.",function(err,docs){
+app.get("/api/solicitudesBanco", function(req,res){ //Revisar
+    console.log("\nConsulta Solicitudes Banco\n");
+    bancoSangre.find({idbanco:req.body.idbanco},"solicitudes_banco",function(err,docs){
 	console.log(docs);
 	res.json(docs);
     });
+});
+app.post("/api/enviarSolicitud", function(req,res){
+    console.log("\nEnviar Solicitud");
+    bancoSangre.findOneAndUpdate(
+	{nombre: req.body.receptor},{$push:{"solicitudes_banco":{tipo_de_sangre:req.body.tipo_de_sangre,mensaje:req.body.mensaje,receptor:req.body.receptor,solicitante:req.body.solicitante}}},
+	function(err,docs){
+	    res.send("Solicitud enviada");
+	});
 });
 app.post("/Imprimir", function(req,res){
     bancoSangre.find({idbanco:req.body.encargado},function(err,docs){
