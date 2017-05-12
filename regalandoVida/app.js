@@ -21,7 +21,7 @@ app.post("/Peticion", function(req,res){
     console.log(req.body);
     //var yourModel = req.body.encargado;
     //console.log("Consulta: " + yourModel);
-    res.send("recieved your request!");
+    res.send("recieved your request!\n");
 });
 app.get('/', function(req, res){
     res.sendfile('./public/index.html');
@@ -30,9 +30,8 @@ app.get("/api/menuBanco", function(req,res){
     //bancoSangre.find({idbanco:"bClinicaAmericas"},"encargado telefono localizacion.direccion",function(err,docs){
     console.log("Consulta Informacion Banco Sangre\n");
     bancoSangre.find({idbanco:req.body.idbanco},"encargado telefono localizacion.direccion",function(err,docs){
-	console.log(docs);
+	console.log(docs + "\n");
 	res.json(docs);
-	//docs.telefono = "1111111";
     });
 });
 app.get("/api/estadoReserva", function(req,res){
@@ -42,20 +41,23 @@ app.get("/api/estadoReserva", function(req,res){
 	res.json(docs);
     });
 });
-app.post("/api/estadoReserva", function(req,res){    
-    //var yourModel = req.body;
-    //console.log("Consulta: " + yourModel);
-    res.json(yourModel);
+app.post("/api/estadoReserva", function(req,res){
+    console.log("Modificacion Reserva Sangre\n");
+    bancoSangre.findOneAndUpdate({idbanco:req.body.idbanco},
+				 {"tipo_de_sangre.Amas":req.body.Amas,"tipo_de_sangre.Amenos":req.body.Amenos,"tipo_de_sangre.Omas":req.body.Omas,"tipo_de_sangre.Omenos":req.body.Omenos,"tipo_de_sangre.ABmas":req.body.ABmas,"tipo_de_sangre.ABmenos":req.body.ABmenos},
+				 function(err,docs){
+	res.send("\nModificaciones De Las Reservas De Sangre Realizadas");
+    });
 });
 app.get("/api/buscarBanco", function(req,res){
-    	console.log("Consulta Estado Reserva Sangre Banco\n");
+    console.log("Consulta Estado Reserva Sangre Banco\n");
     bancoSangre.find({idbanco:req.body.idbanco},"tipo_de_sangre",function(err,docs){
 	console.log(docs);
 	res.json(docs);
     });
 });
 app.get("/api/solicitudesBanco", function(req,res){
-    	console.log("Consulta Solicitudes Banco\n");
+    console.log("Consulta Solicitudes Banco\n");
     bancoSangre.find({idbanco:req.body.idbanco},"solicitudes_banco",function(err,docs){
 	console.log(docs);
 	res.json(docs);
