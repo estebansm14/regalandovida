@@ -15,6 +15,7 @@ var mongoose = require("mongoose");
 var bancoSangre = require('./model/bancoSangre').bancoSangre;
 //var hospital = require('./model/hospital').hospital;
 //var usuario = require('./model/usuario').usuario;
+
 app.post("/Peticion", function(req,res){
     //var Peticion = req.body;
     console.log("Aqui Envio Una Peticion A El Servidor");
@@ -25,6 +26,14 @@ app.post("/Peticion", function(req,res){
 });
 app.get('/', function(req, res){
     res.sendfile('./public/index.html');
+});
+app.post("/api/enviarSolicitud", function(req,res){
+    console.log("\nEnviar Solicitud");
+    bancoSangre.findOneAndUpdate(
+	{nombre: req.body.receptor},{$push:{"solicitudes_banco":{tipo_de_sangre:req.body.tipo_de_sangre,mensaje:req.body.mensaje,receptor:req.body.receptor,solicitante:req.body.solicitante}}},
+	function(err,docs){
+	    res.send("Solicitud enviada");
+	});
 });
 app.get("/api/menuBanco", function(req,res){    
     //bancoSangre.find({idbanco:"bClinicaAmericas"},"encargado telefono localizacion.direccion",function(err,docs){
@@ -46,8 +55,8 @@ app.post("/api/estadoReserva", function(req,res){
     bancoSangre.findOneAndUpdate({idbanco:req.body.idbanco},
 				 {"tipo_de_sangre.Amas":req.body.Amas,"tipo_de_sangre.Amenos":req.body.Amenos,"tipo_de_sangre.Omas":req.body.Omas,"tipo_de_sangre.Omenos":req.body.Omenos,"tipo_de_sangre.ABmas":req.body.ABmas,"tipo_de_sangre.ABmenos":req.body.ABmenos},
 				 function(err,docs){
-	res.send("\nModificaciones De Las Reservas De Sangre Realizadas");
-    });
+				     res.send("\nModificaciones De Las Reservas De Sangre Realizadas");
+				 });
 });
 app.get("/api/buscarBanco", function(req,res){
     console.log("Consulta Estado Reserva Sangre Banco\n");
@@ -58,7 +67,7 @@ app.get("/api/buscarBanco", function(req,res){
 });
 app.get("/api/solicitudesBanco", function(req,res){
     console.log("Consulta Solicitudes Banco\n");
-    bancoSangre.find({idbanco:req.body.idbanco},"solicitudes_banco",function(err,docs){
+    bancoSangre.find({idbanco:req.body.idbanco},"solicitudes_banco.",function(err,docs){
 	console.log(docs);
 	res.json(docs);
     });
@@ -129,8 +138,7 @@ db.on('error', console.error.bind(console, 'connection error:'));
  * console.log(docs);
  * res.send("Hola Mundo");
  *     });
- * });
- * */
+ * }); */
 //var Schema = mongoose.Schema;
 //var banco = mongoose.model('banco', bancoSangreDB);
 //var hospital = mongoose.model('hospital', hospitalDB);
@@ -139,29 +147,34 @@ db.on('error', console.error.bind(console, 'connection error:'));
 //console.log(silence.name);
 
 /* var nose = new bancoSangre({
- *     idbanco: "bCruzRoja",
- *     nombre: "Banco de Sangre Cruz Roja",
+ *     idbanco: "bClinicaCardiovascular",
+ *     nombre: "Clinica Cardiovascular",
  *     localizacion: ({
- * pais: "Colombia",
- * departamento: "Antioquia",
- * ciudad: "Medellin",
- * direccion: "Calle 74 # 12 65"
+ * 	pais: "Colombia",
+ * 	departamento: "Antioquia",
+ * 	ciudad: "Medellin",
+ * 	direccion: "Calle 55 #75 32"
  *     }),
- *     encargado: "Dra. Erminia",
- *     telefono: "9846352",
+ *     encargado: "Dra. Eloy",
+ *     telefono: "3482914",
  *     tipo_de_sangre: ({
- * Amas: 940,
- * Amenos: 700,
- * Omas: 100,
- * Omenos: 920,
- * ABmas: 730,
- *  ABmenos: 450
- *     })
- * });*/
-/* nose.save(function(err,user,numero){
+ * 	Amas: 490,
+ * 	Amenos: 250,
+ * 	Omas: 920,
+ * 	Omenos: 520,
+ * 	ABmas: 380,
+ * 	ABmenos: 730
+ *     }),
+ *     solicitudes_banco: [{
+ * 	solicitante: "Cruz Roja",
+ * 	receptor: "Clinica Cardiovascular",
+ * 	mensaje: "Se solicita disponibilidad de sagre de caracter urgente, para un paciente en estado critico",
+ * 	tipo_de_sangre: "AB-"
+ *     }]
+ * });
+ * nose.save(function(err,user,numero){
  *     if(err){
- *  console.log(String(err));
+ * 	console.log(String(err));
  *     }
  *     console.log("DB Datos guardados");
- * });
- * */
+ * });*/
