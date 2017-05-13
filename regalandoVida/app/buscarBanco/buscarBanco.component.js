@@ -1,4 +1,7 @@
 "use strict";
+/**
+ * Created by Esteban on 13/05/17.
+ */
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,16 +10,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var estado = (function () {
-    function estado() {
+var buscarBanco = (function () {
+    function buscarBanco() {
     }
-    return estado;
+    return buscarBanco;
 }());
-estado = __decorate([
+buscarBanco = __decorate([
     core_1.Component({
-        selector: 'estado',
-        templateUrl: 'bancoDeSangre/reservas.html'
+        selector: 'buscarBanco',
+        templateUrl: 'bancoDeSangre/buscarBanco.html'
     })
-], estado);
-exports.estado = estado;
-//# sourceMappingURL=estado.component.js.map
+], buscarBanco);
+exports.buscarBanco = buscarBanco;
+//# sourceMappingURL=buscarBanco.component.js.map

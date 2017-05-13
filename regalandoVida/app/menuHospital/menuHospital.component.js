@@ -6,17 +6,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Created by Esteban on 13/05/17.
+ */
 var core_1 = require("@angular/core");
-var estado = (function () {
-    function estado() {
+var menu = (function () {
+    function menu() {
     }
-    return estado;
+    return menu;
 }());
-estado = __decorate([
+menu = __decorate([
     core_1.Component({
-        selector: 'estado',
-        templateUrl: 'bancoDeSangre/reservas.html'
+        selector: 'menu',
+        templateUrl: 'hospital/menuHospital.html'
     })
-], estado);
-exports.estado = estado;
-//# sourceMappingURL=estado.component.js.map
+], menu);
+exports.menu = menu;
+//# sourceMappingURL=menuHospital.component.js.map
