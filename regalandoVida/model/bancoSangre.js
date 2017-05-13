@@ -22,18 +22,12 @@ var bancoSangre_schema = new Schema({
 	ABmas: Number,
 	ABmenos: Number
     }),
-    alerta: new Schema ({
+    solicitudes_banco: [{
 	solicitante: String,
 	receptor: String,
 	mensaje: String,
 	tipo_de_sangre: String
-    }),
-    solicitudes_banco: new Schema ({
-	solicitante: String,
-	receptor: String,
-	mensaje: String,
-	tipo_de_sangre: String
-    })
+    }]
 
 });
 
