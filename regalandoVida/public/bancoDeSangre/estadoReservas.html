@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html lang="es" ng-app="estado_reservas_Angular">
+<html>
 <head>
   <meta charset="utf-8">
   <title> Estado Reservas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
   <link rel="stylesheet" href="stylesheets/bootstrap-theme.min.css">
   <link rel="stylesheet" href="stylesheets/menu.css" type="text/css">
@@ -19,7 +21,7 @@
     }
   </script>
 </head>
-<body ng-controller="controlador">
+<body >
   <header>
     <nav id="banco">
       <a>Banco de sangre</a>
@@ -29,6 +31,7 @@
       <a>  menu </a>
     </nav>
   </header>
+    <section id="body">
   <h3 id="title">
     Estado Reservas
   </h3>
@@ -77,6 +80,9 @@
         <td><input type="text" id="AB-"></td>
       </tr>
   </table>
+
+
+  </section>
   <button type="button" class="btn btn-default btn-lg active" id="guardar" onclick="alerta();">Guardar Cambios</button>
 </div>
 </body>

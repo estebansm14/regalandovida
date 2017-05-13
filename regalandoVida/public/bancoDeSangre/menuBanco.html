@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<htlm lang="es" ng-app="menu_banco_Angular">
+<htlm>
   <head >
     <title>Regalando vida </title>
+    <meta charset="utf-8">
     <link rel="stylesheet" href="stylesheets/menu.css" type="text/css">
     <link rel="stylesheet" href="stylesheets/menuBanco.css">
   </head>
-  <body  ng-controller="controlador">
+  <body >
     <header>
       <nav id="banco">
         <a>Banco de sangre</a>
       </nav>
       <nav id="info">
-        <a [innerHTML]="nombre" onload="mostarNombre()"></a>
+        <a> {{nombre}}</a>
         <a>  menu </a>
       </nav>
     </header>
@@ -30,13 +31,12 @@
       <div id="informacion">
         <a id="perfil" href="editarPerfil.html">Editar Perfil</a><br>
         <a> Encargado: </a>
-        <a id="encargado" onload="encargado()"> </a> <br>
+        <a id="encargado"> </a> <br>
         <a> Telefono  :</a>
-        <a id="telefono" onload="telefono()"> </a> <br>
+        <a id="telefono" > </a> <br>
         <a> Direccion :  </a>
-        <a id="direccion" onload="direccion()"> </a>
+        <a id="direccion"> </a>
       </div>
     </section>
-
   </body>
   </html>

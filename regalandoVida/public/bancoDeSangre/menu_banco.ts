@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-
+import { Component, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   templateUrl: 'regalandoVida/public/bancoDeSangre/menuBanco.html',
@@ -7,11 +6,9 @@ import { Component } from '@angular/core';
 
 
 export class menu_banco{
-  private nombre: String;
+  public nombre: String;
 
-
-  public mostarNombre(){
-     this.nombre = 'banco';
+  constructor (){
+    this.nombre = 'hola parce';
   }
-
 }

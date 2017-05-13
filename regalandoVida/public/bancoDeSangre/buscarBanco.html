@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="buscar_banco_Angular">
+<head>
+  <meta charset="utf-8">
+  <title>Buscar bancos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
+  <link rel="stylesheet" href="stylesheets/menu.css" type="text/css">
+  <link rel="stylesheet" href="stylesheets/buscar_banco.css" type="text/css">
+  <script type="text/javascript">
+  function llamar(){
+    var resultado = document.getElementById('seleccion').value;
+    document.getElementById('exit').innerHTML = resultado;
+  }
+  function limpiar(){
+    document.getElementById('textArea').innerHTML="";
+  }
+  function mensaje(){
+    var texto = document.getElementById('textArea').value;
+    alert(texto);
+  }
+  </script>
+</head>
+<body ng-controller="controlador">
+  <header>
+    <nav id="banco">
+      <a>Banco de sangre</a>
+    </nav>
+    <nav id="info">
+      <a> Clinica las americas</a>
+      <a> menu</a>
+    </nav>
+  </header>
+  <section id="body">
+    <h3 id="title"> BUSCAR BANCO DE SANGRE</h3>
+    <img src="bancoDeSangre/logo.png" height="200" alt="300" style="float:right"/>
+    <nav id="menu">
+      <a href="menuBanco.html">Perfil</a>
+      <a href="estadoReservas.html">Estado Reservas</a>
+      <a href="buscarDonante.html">Buscar Donantes</a>
+      <a href="Buscar_banco.html">Contactar Banco De Sangre</a>
+    <a href="solicitudes.html">Solicitudes</a>
+    </nav>
+
+    <div id="bancos">
+      <select id="seleccion">
+        <option>cruz roja</option>
+        <option> las americas</option>
+        <option> las venturass</option>
+      </select>
+      <button type="button" id="buscar" onclick="llamar()">BUSCAR</button>
+
+      <table id="tabla" border="2px" class="table table-striped">
+        <tr>
+          <td>chek</td> <td>tipo</td><td>cantidad</td>
+        </tr>
+        <tr>
+          <td></td><td>A+</td><td id="cA+"></td>
+        </tr>
+        <tr>
+          <td></td><td>A-</td><td id="cA-"></td>
+        </tr>
+        <tr>
+          <td></td><td>O+</td><td id="cO+"></td>
+        </tr>
+        <tr>
+          <td></td><td>O-</td><td id="cO-"></td>
+        </tr>
+        <tr>
+          <td></td><td>AB+</td><td id="cAB+"></td>
+        </tr>
+        <tr>
+          <td></td><td>AB-</td><td id="cAB-"></td>
+        </tr>
+      </table>
+      <br>
+      <textarea name="textArea" id="textArea" rows="8" cols="80" onclick="limpiar();">mensaje..</textarea>
+      <br>
+      <button type="button" id="solicitar" onclick="mensaje();"> solicitar </button>
+    </div>
+        </section>
+</body>
+</html>
