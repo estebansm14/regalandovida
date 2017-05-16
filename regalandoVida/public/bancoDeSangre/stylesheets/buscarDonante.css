@@ -4,8 +4,8 @@ div#donantes{
   width: 650px;
   height: 500px;
   position: relative;
-  top: -300px;
-  left: 500px;
+  top: -430px;
+  left: 400px;
 }
 div#donantes select{
   width: 250px;
