@@ -10,29 +10,19 @@ var usuario_schema = new Schema({
     nacionalidad: ({
  	pais: String,
  	departamento: String,
- 	ciudad: String  
+ 	ciudad: String
     }),
     tipo_de_sangre: String,
-    historial_donaciones: ({
+    historial_donaciones: [{
  	nombre_banco: String,
  	idbanco: String,
- 	fecha: Date
-    }),
-    alerta: new Schema ({
+ 	fecha: String,
+    }],
+    solicitudes_usuario: [{
  	solicitante: String,
  	receptor: String,
  	mensaje: String,
- 	tipo_de_sangre: String
-    }),
-    solicitudes_usuario: new Schema ({
- 	solicitante: String,
- 	receptor: String,
- 	mensaje: String,
- 	tipo_de_sangre: String
-    })
-    
+    }]
 });
-
 var usuario = mongoose.model("usuario", usuario_schema);
-
 module.exports.usuario = usuario;

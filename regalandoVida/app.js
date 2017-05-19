@@ -13,9 +13,51 @@ var mongoose = require("mongoose");
 /* var cookieParser = require('cookie-parser');
  * app.use(cookieParser());*/
 var bancoSangre = require('./model/bancoSangre').bancoSangre;
-//var hospital = require('./model/hospital').hospital;
-//var usuario = require('./model/usuario').usuario;
+var hospital = require('./model/hospital').hospital;
+var usuario = require('./model/usuario').usuario;
 
+var nose = new usuario({
+    idbanco: "jalcara1",
+    nombre: "Juan Pablo Alcaraz Florez",
+    telefono: "3195045330"
+    nacionalidad: ({
+ 	pais: "Colombia",
+ 	departamento: "Antioquia",
+ 	ciudad: "Medellin",
+    }),
+    tipo_de_sangre: "Omas",
+    telefono: "3482914",
+    historial_donaciones: [{
+	nombre_banco: "Clinica Cardiovascular",
+	idbanco: "bClinicaCardiovascular"
+	fecha: "Febrero 31 de 2018"
+    }],
+    solicitudes_usuario: [{
+ 	solicitante: "Cruz Roja",
+ 	receptor: "Juan Pablo Alcaraz Florez",
+ 	mensaje: "Solicitud de donacion de sangre para un usuario en estado critico",
+    }]
+});
+/* nose.save(function(err,user,numero){
+ *     if(err){
+ *  	console.log(String(err));
+ *     }
+ *     console.log("DB Datos guardados");
+ * });*/
+app.get("/api/menuBanco", function(req,res){    
+    console.log("\nConsulta Nombre Bancos");
+    bancoSangre.find({},"nombre",function(err,docs){
+	console.log(docs);
+	res.json(docs);
+    });
+});
+app.post("/api/menuBanco", function(req,res){    
+    console.log("\nConsulta Usuarios Tipo Sangre");
+    usuario.find({tipo_de_sangre:req.body.tipo_de_sangre},"nombre telefono nacionalidad.ciudad",function(err,docs){
+	console.log(docs);
+	res.json(docs);
+    });
+});
 app.post("/Peticion", function(req,res){
     //var Peticion = req.body;
     console.log("Aqui Envio Una Peticion A El Servidor");
@@ -47,7 +89,7 @@ app.post("/api/estadoReserva", function(req,res){
     bancoSangre.findOneAndUpdate({idbanco:req.body.idbanco},
 				 {"tipo_de_sangre.Amas":req.body.Amas,"tipo_de_sangre.Amenos":req.body.Amenos,"tipo_de_sangre.Omas":req.body.Omas,"tipo_de_sangre.Omenos":req.body.Omenos,"tipo_de_sangre.ABmas":req.body.ABmas,"tipo_de_sangre.ABmenos":req.body.ABmenos},
 				 function(err,docs){
-				     res.send("\nModificaciones De Las Reservas De Sangre Realizadas");
+				     res.send("\nModificaciones de las reservas de sangre realizadas");
 				 });
 });
 app.get("/api/buscarBanco", function(req,res){
@@ -67,10 +109,16 @@ app.get("/api/solicitudesBanco", function(req,res){ //Revisar
 app.post("/api/enviarSolicitud", function(req,res){
     console.log("\nEnviar Solicitud");
     bancoSangre.findOneAndUpdate(
-	{nombre: req.body.receptor},{$push:{"solicitudes_banco":{tipo_de_sangre:req.body.tipo_de_sangre,mensaje:req.body.mensaje,receptor:req.body.receptor,solicitante:req.body.solicitante}}},
+	{nombre: req.body.receptor},{$push:{"solicitudes_banco":{mensaje:req.body.mensaje,receptor:req.body.receptor,solicitante:req.body.solicitante}}},
 	function(err,docs){
 	    res.send("Solicitud enviada");
 	});
+});
+app.post("/api/eliminarSolicitud", function(req,res){ // Revisar con Id
+    console.log("\Eliminando solicitud banco: " + req.body.idbanco + " :: " + req.body.solicitante);
+    bancoSangre.update({idbanco:req.body.idbanco},{$pull:{"solicitudes_banco":{solicitante:req.body.solicitante}}},function(err,docs){
+	res.send("Solicitud eliminada");
+    });
 });
 app.post("/Imprimir", function(req,res){
     bancoSangre.find({idbanco:req.body.encargado},function(err,docs){
