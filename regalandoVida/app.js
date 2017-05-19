@@ -19,7 +19,7 @@ var usuario = require('./model/usuario').usuario;
 var nose = new usuario({
     idbanco: "jalcara1",
     nombre: "Juan Pablo Alcaraz Florez",
-    telefono: "3195045330"
+    telefono: "3195045330",
     nacionalidad: ({
  	pais: "Colombia",
  	departamento: "Antioquia",
@@ -29,8 +29,8 @@ var nose = new usuario({
     telefono: "3482914",
     historial_donaciones: [{
 	nombre_banco: "Clinica Cardiovascular",
-	idbanco: "bClinicaCardiovascular"
-	fecha: "Febrero 31 de 2018"
+	idbanco: "bClinicaCardiovascular",
+	fecha: "Febrero 31 de 2018",
     }],
     solicitudes_usuario: [{
  	solicitante: "Cruz Roja",
