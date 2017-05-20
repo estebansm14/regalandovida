@@ -16,41 +16,6 @@ var bancoSangre = require('./model/bancoSangre').bancoSangre;
 var hospital = require('./model/hospital').hospital;
 var usuario = require('./model/usuario').usuario;
 
-var nose = new bancoSangre({
-    idbanco: "bLeonXIII",
-    nombre: "Clinica Leon XIII",
-    localizacion: ({
- 	pais: "Colombia",
- 	departamento: "Antioquia",
- 	ciudad: "Medellin",
- 	direccion: "Calle 69 Nº 51 C 24"
-    }),
-    encargado: "Dra. Leon",
-    telefono: "4447085",
-    tipo_de_sangre: ({
- 	Amas: 490,
- 	Amenos: 250,
- 	Omas: 920,
- 	Omenos: 520,
- 	ABmas: 380,
- 	ABmenos: 730
-    }),
-    solicitudes_banco: [{
- 	solicitante: "Clinica el Rosario",
- 	receptor: "Clinica Leon XIII",
- 	mensaje: "Se solicita reservas de sangre de tipo A-, para un paciente en estado de reserva",
-    },{
-	solicitante: "Cruz Roja Colombiana",
-	receptor: "Clinica Leon XIII",
-	mensaje: "Se solicita disponibilidad de sagre de tipo O-, para un paciente en estado Critico",
-    }]
-});
-/* nose.save(function(err,user,numero){
- *     if(err){
- *     	console.log(String(err));
- *     }
- *     console.log("DB Datos guardados");
- * });*/
 app.get("/api/bancos", function(req,res){    
     console.log("\nConsulta Nombre Bancos");
     bancoSangre.find({},"nombre",function(err,docs){
