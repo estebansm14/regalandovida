@@ -1,29 +1,39 @@
 div#bancos{
   position: relative;
-  top: -350px;
+  top: -430px;
   bottom: 0px;
   right: 0px;
-  left: 500px;
+  left: 380px;
   border: 3px solid black;
   width: 700px;
   height: 600px;
 }
 div#bancos select{
-   width: 300px;
+   width: 400px;
+   height: 35px;
+   background-color: rgb(224, 48, 13);
+   color: #FFFFFF;
 
 }
 div#bancos button#buscar{
-   width: 150px;
+   width: 250px;
+   height: 35px;
    float: right;
+   background-color: rgb(224, 48, 13);
+   color: #FFFFFF;
 }
 div#bancos button#solicitar{
-   width: 150px;
+   background-color: rgb(224, 48, 13);
+   width: 200px;
+   height: 35px;
    position: relative;
    left: 250px;
    top: 10px;
+   color: #FFFFFF;
+   border-bottom-color: #FFFFFF;
 }
 table#tabla{
-  width: 600px;
+  width: 650px;
   height: 300px;
   position: relative;
   left: 20px;
@@ -31,6 +41,7 @@ table#tabla{
 }
 textarea{
   border: 3px solid black;
+  width: 650px;
   position: relative;
-  left: 100px;
+  left: 20px;
  }
