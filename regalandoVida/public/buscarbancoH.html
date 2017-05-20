@@ -24,7 +24,6 @@
     <a href="menuHospital.html">Perfil</a>
     <a href="buscarDonanteH.html">Buscar Donantes</a>
     <a href="buscarbancoH.html">Buscar Banco De Sangre</a>
-    <a href="solicitudesH.html">Solicitudes</a>
   </nav>
 
   <div id="mbancos">
@@ -36,7 +35,7 @@
       <option value=""></option>
       <option value=""></option>
     </select>
-    <button type="button" id="buscar">buscar</button>
+    <button type="button" id="buscar">BUSCAR</button>
   </div>
         <div id="info_banco">
           <a id="nombre_banco" >nombre del banco</a> <br>
@@ -80,5 +79,10 @@
             <td></td>
           </tr>
         </table>
+    <br>
+    <textarea name="textArea" id="textArea" rows="8" cols="80" onclick="limpiar();">mensaje..</textarea>
+    <br>
+    <button type="button" id="solicitar" onclick="mensaje();"> Solicitar</button>
+  </div>
   </body>
   </html>
