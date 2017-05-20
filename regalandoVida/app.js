@@ -15,79 +15,94 @@ var mongoose = require("mongoose");
 var bancoSangre = require('./model/bancoSangre').bancoSangre;
 var hospital = require('./model/hospital').hospital;
 var usuario = require('./model/usuario').usuario;
-
-app.post("/Peticion", function(req,res){
-    //var Peticion = req.body;
-    console.log("Aqui Envio Una Peticion A El Servidor");
-    console.log(req.body);
-    //var yourModel = req.body.encargado;
-    //console.log("Consulta: " + yourModel);
-    res.send("recieved your request!\n");
-});
-app.get('/', function(req, res){
-    res.sendfile('./public/index.html');
-});
-app.get("/api/menuBanco", function(req,res){  
-    //bancoSangre.find({idbanco:"bClinicaAmericas"},"encargado telefono localizacion.direccion",function(err,docs){
-    console.log("\nConsulta Informacion Banco Sangre");
+/* app.get('/', function(req, res){
+ *     res.sendfile('./public/index.html');
+ * });*/
+app.get("/api/menuBanco", function(req,res){
+    console.log("Consulta Informacion Banco Sangre");
     bancoSangre.find({idbanco:req.body.idbanco},"encargado telefono localizacion.direccion",function(err,docs){
 	console.log(docs);
 	res.json(docs);
     });
 });
+app.get("/api/menuHospital", function(req,res){ //Hospital
+    console.log("Consulta Informacion Hospital");
+    hospital.find({idhospital:req.body.idhospital},"encargado telefono localizacion.direccion",function(err,docs){
+	console.log(docs);
+	res.json(docs);
+    });
+});
+app.get("/api/bancoInformacion", function(req,res){ //Hospital
+    console.log("Consulta Hospital Informacion Banco Sangre ");
+    bancoSangre.find({idbanco:req.body.idbanco},"encargado telefono localizacion.direccion tipo_de_sangre",function(err,docs){
+	console.log(docs);
+	res.json(docs);
+    });
+});
 app.get("/api/estadoReserva", function(req,res){
-    console.log("Consulta Estado Reservas Sangre\n");
+    console.log("Consulta Estado Reservas Sangre");
     bancoSangre.find({idbanco:req.body.idbanco},"tipo_de_sangre",function(err,docs){
 	console.log(docs);
 	res.json(docs);
     });
 });
 app.post("/api/estadoReserva", function(req,res){
-    console.log("Modificacion Reserva Sangre\n");
-    bancoSangre.findOneAndUpdate({idbanco:req.body.idbanco},
-				 {"tipo_de_sangre.Amas":req.body.Amas,"tipo_de_sangre.Amenos":req.body.Amenos,"tipo_de_sangre.Omas":req.body.Omas,"tipo_de_sangre.Omenos":req.body.Omenos,"tipo_de_sangre.ABmas":req.body.ABmas,"tipo_de_sangre.ABmenos":req.body.ABmenos},
-				 function(err,docs){
-				     res.send("\nModificaciones de las reservas de sangre realizadas");
-				 });
+    console.log("Modificacion Reserva Sangre");
+    bancoSangre.findOneAndUpdate(
+	{idbanco:req.body.idbanco},
+	{"tipo_de_sangre.Amas":req.body.Amas,"tipo_de_sangre.Amenos":req.body.Amenos,
+	 "tipo_de_sangre.Omas":req.body.Omas,"tipo_de_sangre.Omenos":req.body.Omenos,
+	 "tipo_de_sangre.ABmas":req.body.ABmas,"tipo_de_sangre.ABmenos":req.body.ABmenos},
+	function(err,docs){
+	    res.send("Modificaciones de las reservas de sangre realizadas");
+	});
 });
 app.get("/api/buscarBanco", function(req,res){
-    console.log("Consulta Estado Reserva Sangre Banco\n");
+    console.log("Consulta Estado Reserva Sangre Banco");
     bancoSangre.find({idbanco:req.body.idbanco},"tipo_de_sangre",function(err,docs){
 	console.log(docs);
 	res.json(docs);
     });
 });
 app.get("/api/solicitudesBanco", function(req,res){ //Revisar
-    console.log("\nConsulta Solicitudes Banco\n");
+    console.log("Consulta Solicitudes Banco");
     bancoSangre.find({idbanco:req.body.idbanco},"solicitudes_banco",function(err,docs){
 	console.log(docs);
 	res.json(docs);
     });
 });
 app.post("/api/enviarSolicitud", function(req,res){
-    console.log("\nEnviar Solicitud");
+    console.log("Enviar Solicitud");
     bancoSangre.findOneAndUpdate(
-	{nombre: req.body.receptor},{$push:{"solicitudes_banco":{mensaje:req.body.mensaje,receptor:req.body.receptor,solicitante:req.body.solicitante}}},
+	{nombre: req.body.receptor},
+	{$push:{"solicitudes_banco":{
+	    mensaje:req.body.mensaje,
+	    receptor:req.body.receptor,
+	    solicitante:req.body.solicitante}}},
 	function(err,docs){
 	    res.send("Solicitud enviada");
 	});
 });
 app.post("/api/eliminarSolicitud", function(req,res){ // Revisar con Id
-    console.log("\Eliminando solicitud banco: " + req.body.idbanco + " :: " + req.body.solicitante);
-    bancoSangre.update({idbanco:req.body.idbanco},{$pull:{"solicitudes_banco":{solicitante:req.body.solicitante}}},function(err,docs){
+    console.log("Eliminando solicitud banco: " + req.body.idbanco + " :: " + req.body.solicitante);
+    bancoSangre.update(
+	{idbanco:req.body.idbanco},
+	{$pull:{"solicitudes_banco":{
+	    solicitante:req.body.solicitante}}},function(err,docs){
 	res.send("Solicitud eliminada");
     });
 });
 app.get("/api/bancos", function(req,res){    
-    console.log("\nConsulta Nombre Bancos");
+    console.log("Consulta Nombre Bancos");
     bancoSangre.find({},"nombre",function(err,docs){
 	console.log(docs);
 	res.json(docs);
     });
 });
 app.get("/api/usuario/:tipo_de_sangre", function(req,res){    
-    console.log("\nConsulta Usuarios Tipo Sangre" + " :: " +  req.params.tipo_de_sangre);
-    usuario.find({tipo_de_sangre:req.params.tipo_de_sangre},"nombre telefono nacionalidad.ciudad",function(err,docs){
+    console.log("Consulta Usuarios Tipo Sangre");
+    usuario.find({tipo_de_sangre:req.params.tipo_de_sangre},
+		 "nombre telefono nacionalidad.ciudad",function(err,docs){
 	console.log(docs);
 	res.json(docs);
     });
@@ -197,4 +212,13 @@ db.on('error', console.error.bind(console, 'connection error:'));
  *  	console.log(String(err));
  *     }
  *     console.log("DB Datos guardados");
+ * });*/
+
+/* app.post("/Peticion", function(req,res){
+ *     //var Peticion = req.body;
+ *     console.log("Aqui Envio Una Peticion A El Servidor");
+ *     console.log(req.body);
+ *     //var yourModel = req.body.encargado;
+ *     //console.log("Consulta: " + yourModel);
+ *     res.send("recieved your request!\n");
  * });*/
