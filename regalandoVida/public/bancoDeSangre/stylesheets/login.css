@@ -51,4 +51,7 @@ span.psw {
     float: right;
     padding-top: 16px;
 }
-
+#selectApp{
+    width: 200px;
+    height: 35px;
+}
