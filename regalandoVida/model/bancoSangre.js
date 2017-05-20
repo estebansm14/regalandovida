@@ -3,6 +3,7 @@ var Schema = mongoose.Schema;
 //mongoose.connect("mongodb://localhost/RegalandoVida");
 var bancoSangre_schema = new Schema({
     idbanco: String,
+    pass: String,
     nombre: String,
     localizacion: ({
 	pais: String,
@@ -31,6 +32,7 @@ module.exports.bancoSangre = bancoSangre;
 
 /* var nose = new bancoSangre({
  *     idbanco: "bClinicaCardiovascular",
+ *     pass: "bClinicaCardiovascular"
  *     nombre: "Clinica Cardiovascular",
  *     localizacion: ({
  * 	pais: "Colombia",

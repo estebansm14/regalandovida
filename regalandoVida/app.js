@@ -20,9 +20,9 @@ var usuario = require('./model/usuario').usuario;
  * });*/
 app.get("/api/menuBanco", function(req,res){
     console.log("Consulta Informacion Banco Sangre");
-    bancoSangre.find({idbanco:req.body.idbanco},"encargado telefono localizacion.direccion",function(err,docs){
+    bancoSangre.find({idbanco:req.body.idbanco,pass:req.body.pass},"encargado telefono localizacion.direccion",function(err,docs){
 	console.log(docs);
-	res.json(docs);
+	res.json(docs);	    
     });
 });
 app.get("/api/menuHospital", function(req,res){ //Hospital
@@ -89,8 +89,8 @@ app.post("/api/eliminarSolicitud", function(req,res){ // Revisar con Id
 	{idbanco:req.body.idbanco},
 	{$pull:{"solicitudes_banco":{
 	    solicitante:req.body.solicitante}}},function(err,docs){
-	res.send("Solicitud eliminada");
-    });
+		res.send("Solicitud eliminada");
+	    });
 });
 app.get("/api/bancos", function(req,res){    
     console.log("Consulta Nombre Bancos");
@@ -103,9 +103,9 @@ app.get("/api/usuario/:tipo_de_sangre", function(req,res){
     console.log("Consulta Usuarios Tipo Sangre");
     usuario.find({tipo_de_sangre:req.params.tipo_de_sangre},
 		 "nombre telefono nacionalidad.ciudad",function(err,docs){
-	console.log(docs);
-	res.json(docs);
-    });
+		     console.log(docs);
+		     res.json(docs);
+		 });
 });
 app.post("/Imprimir", function(req,res){
     bancoSangre.find({idbanco:req.body.encargado},function(err,docs){

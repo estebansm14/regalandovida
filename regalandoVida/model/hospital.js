@@ -3,6 +3,7 @@ var Schema = mongoose.Schema;
 //mongoose.connect("mongodb://localhost/RegalandoVida");
 var hospital_schema = new Schema({
     idhospital: String,
+    pass: String,
     nombre: String,
     localizacion: ({
   	país: String,
@@ -18,6 +19,7 @@ module.exports.hospital = hospital;
 
 /* var nose = new hospital({
  *     idhospital: "hSanIgnacio",
+ *     pass: "hSanIgnacio"
  *     nombre: "Hospital Universitario San Ignacio",
  *     localizacion: ({
  * 	pais: "Colombia",
