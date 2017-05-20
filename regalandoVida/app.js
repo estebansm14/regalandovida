@@ -16,42 +16,49 @@ var bancoSangre = require('./model/bancoSangre').bancoSangre;
 var hospital = require('./model/hospital').hospital;
 var usuario = require('./model/usuario').usuario;
 
-var nose = new usuario({
-    idbanco: "jalcara1",
-    nombre: "Juan Pablo Alcaraz Florez",
-    telefono: "3195045330",
-    nacionalidad: ({
+var nose = new bancoSangre({
+    idbanco: "bLeonXIII",
+    nombre: "Clinica Leon XIII",
+    localizacion: ({
  	pais: "Colombia",
  	departamento: "Antioquia",
  	ciudad: "Medellin",
+ 	direccion: "Calle 69 Nº 51 C 24"
     }),
-    tipo_de_sangre: "Omas",
-    telefono: "3482914",
-    historial_donaciones: [{
-	nombre_banco: "Clinica Cardiovascular",
-	idbanco: "bClinicaCardiovascular",
-	fecha: "Febrero 31 de 2018",
-    }],
-    solicitudes_usuario: [{
- 	solicitante: "Cruz Roja",
- 	receptor: "Juan Pablo Alcaraz Florez",
- 	mensaje: "Solicitud de donacion de sangre para un usuario en estado critico",
+    encargado: "Dra. Leon",
+    telefono: "4447085",
+    tipo_de_sangre: ({
+ 	Amas: 490,
+ 	Amenos: 250,
+ 	Omas: 920,
+ 	Omenos: 520,
+ 	ABmas: 380,
+ 	ABmenos: 730
+    }),
+    solicitudes_banco: [{
+ 	solicitante: "Clinica el Rosario",
+ 	receptor: "Clinica Leon XIII",
+ 	mensaje: "Se solicita reservas de sangre de tipo A-, para un paciente en estado de reserva",
+    },{
+	solicitante: "Cruz Roja Colombiana",
+	receptor: "Clinica Leon XIII",
+	mensaje: "Se solicita disponibilidad de sagre de tipo O-, para un paciente en estado Critico",
     }]
 });
 /* nose.save(function(err,user,numero){
  *     if(err){
- *  	console.log(String(err));
+ *     	console.log(String(err));
  *     }
  *     console.log("DB Datos guardados");
  * });*/
-app.get("/api/menuBanco", function(req,res){    
+app.get("/api/bancos", function(req,res){    
     console.log("\nConsulta Nombre Bancos");
     bancoSangre.find({},"nombre",function(err,docs){
 	console.log(docs);
 	res.json(docs);
     });
 });
-app.post("/api/menuBanco", function(req,res){    
+app.post("/api/usuario", function(req,res){    
     console.log("\nConsulta Usuarios Tipo Sangre");
     usuario.find({tipo_de_sangre:req.body.tipo_de_sangre},"nombre telefono nacionalidad.ciudad",function(err,docs){
 	console.log(docs);
@@ -198,31 +205,31 @@ db.on('error', console.error.bind(console, 'connection error:'));
  *     idbanco: "bClinicaCardiovascular",
  *     nombre: "Clinica Cardiovascular",
  *     localizacion: ({
- * 	pais: "Colombia",
- * 	departamento: "Antioquia",
- * 	ciudad: "Medellin",
- * 	direccion: "Calle 55 #75 32"
+ *  	pais: "Colombia",
+ *  	departamento: "Antioquia",
+ *  	ciudad: "Medellin",
+ *  	direccion: "Calle 55 #75 32"
  *     }),
  *     encargado: "Dra. Eloy",
  *     telefono: "3482914",
  *     tipo_de_sangre: ({
- * 	Amas: 490,
- * 	Amenos: 250,
- * 	Omas: 920,
- * 	Omenos: 520,
- * 	ABmas: 380,
- * 	ABmenos: 730
+ *  	Amas: 490,
+ *  	Amenos: 250,
+ *  	Omas: 920,
+ *  	Omenos: 520,
+ *  	ABmas: 380,
+ *  	ABmenos: 730
  *     }),
  *     solicitudes_banco: [{
- * 	solicitante: "Cruz Roja",
- * 	receptor: "Clinica Cardiovascular",
- * 	mensaje: "Se solicita disponibilidad de sagre de caracter urgente, para un paciente en estado critico",
- * 	tipo_de_sangre: "AB-"
+ *  	solicitante: "Cruz Roja",
+ *  	receptor: "Clinica Cardiovascular",
+ *  	mensaje: "Se solicita disponibilidad de sagre de caracter urgente, para un paciente en estado critico",
+ *  	tipo_de_sangre: "AB-"
  *     }]
- * });
- * nose.save(function(err,user,numero){
+ * });*/
+/* nose.save(function(err,user,numero){
  *     if(err){
- * 	console.log(String(err));
+ *  	console.log(String(err));
  *     }
  *     console.log("DB Datos guardados");
  * });*/
