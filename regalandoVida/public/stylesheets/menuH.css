@@ -5,12 +5,12 @@
 }
 
 #title{
-  color:#BB0000;
-  font-size: 3em;
+    color:#BB0000;
+    font-size: 6em;
 }
 
 #cuerpo{
-  padding: 0 3% 0 3%;
+    padding: 0 3% 0 3%;
 }
 
 #menu{
@@ -23,51 +23,52 @@
 }
 
 #menu a {
-   text-decoration: none;
-    margin-top: 15px;
-    font-family: Arial;
+    text-decoration: none;
+    margin-top: 4px;
+    font-family: "Times New Roman";
     font-size: 30px;
-    background-color: #cce6ff;
+    background-color: mediumblue;
     display: block;
-    width: 400px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-radius: 0px 20px 20px 0px;
+    width: 360px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 30px 30px 30px 30px;
     padding-left: 20px;
     box-shadow: 5px 0px 10px #939393;
-    color:#fff;
+    color: ghostwhite;
 }
 
 #menu a :hover{
-  padding-left: 50px;
+    padding-left: 50px;
 }
 
 header{
-  width: 100%;
-  overflow: hidden;
-  background: black;
-  margin-bottom: 20px;
-  margin: auto;
-  height: 50px;
+    width: 100%;
+    overflow: hidden;
+    background: black;
+    margin-bottom: 20px;
+    margin: auto;
+    height: 40px;
 }
 
 #hospital a{
-  color: #FFF;
-  font-size: 20px;
-  line-height: 40px;
-  float: left;
+    color: whitesmoke;
+    font-size: 20px;
+    line-height: 40px;
+    float: left;
+    font-weight: bold;
 }
 
 #info{
-   float: right;
-   line-height: 40px;
+    float: right;
+    line-height: 40px;
 }
 
 #info a{
-  display: inline-block;
-  color: white;
-  padding: 10px 20px;
-  font-size: 20px;
-  line-height: normal;
-  font-weight: blood;
+    display: inline-block;
+    color: whitesmoke;
+    padding: 10px 40px;
+    font-size: 20px;
+    line-height: normal;
+    font-weight: bold;
 }
