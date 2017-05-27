@@ -5,11 +5,12 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'menuBanco',
-    templateUrl: 'bancoDeSangre/menuBanco.html'
+    templateUrl: 'public/bancoDeSangre/menuBanco.html'
 })
 
 export class menuBanco{
-    private encargado:any;
-    private telefono:any;
-    private direccion:any;
+    private encargado = String;
+    private telefono = String;
+    private direccion = String;
+    private nombre = String;
 }

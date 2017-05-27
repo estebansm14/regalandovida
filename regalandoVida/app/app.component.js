@@ -9,17 +9,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var AppComponent = (function () {
     function AppComponent() {
-        this.nombreBanco = "clinica las ame";
-        this.encargado = "juanpablo base sde datos ";
-        this.telefono = "4454545";
-        this.direccion = "carrera 78a numero tu cara";
     }
+    AppComponent.prototype.nombre = function () {
+        return "mete lo papi metelo";
+    };
     return AppComponent;
 }());
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        templateUrl: 'bancoDeSangre/estadoReserva.html'
+        template: "\n      <a routerLink=\"/estado\"> a estado </a>\n      <a routerLink=\"/solicitudes\">a solicitud</a>\n      <a routerLink=\"/buscar\"> a donantes</a>\n      <a routerLink=\"/bancos\"> a banco </a>\n      <router-outlet></router-outlet>\n   "
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;

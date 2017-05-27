@@ -4,13 +4,37 @@
 
 import { Component } from '@angular/core';
 
+const Bancos:BANCOS[] = [
+  { nom:'cruz Roja' },
+  { nom:'americas' },
+  { nom:'poblado' },
+  { nom:'esteban'}
+];
+
 @Component({
     selector: 'buscarBanco',
-    templateUrl: 'bancoDeSangre/buscarBanco.html'
-})
-
+    templateUrl: 'public/bancoDeSangre/buscarBanco.html'
+    })
 export class buscarBanco{
-    private bancoSangre: any;
-    private cantidadSangre: any;
-    private mensaje: string;
+     banco = Bancos;
+     nombreBanco: String = "alcaraz aqui va el nombre del banco";
+     bancos: any;
+     cAmas: any;
+     cAmen: any;
+     cOmas: any;
+     cOmen: any;
+     cABmas: any;
+     cABmen: any;
+     nombre: String;
+     texto: String = "mensaje...";
+     constructor(){
+     }
+
+     public limpiar(){
+
+     }
+}
+
+export class BANCOS{
+    nom:String;
 }

@@ -16,24 +16,26 @@
         <a>Banco de sangre</a>
       </nav>
       <nav id="info">
-        <a> Cl&iacute;nica las americas</a>
+        <a>{{nombreBanco}}</a>
         <a>  menu </a>
       </nav>
     </header>
     <h3 id="title">  SOLICITUDES </h3>
     <img src = "logo.png" height="200" alt="300" style="float:right"/>
     <nav id="menu">
-      <a href="menuBanco.html">Perfil</a>
-      <a href="estadoReservas.html">Estado Reservas</a>
-      <a href="buscarDonante.html">Buscar Donantes</a>
-      <a href="Buscar_banco.html">Contactar Banco De Sangre</a>
-      <a href="solicitudes.html">Solicitudes</a>
+      <a routerLink="/">Perfil</a>
+      <a routerLink="/estado">Estado Reservas</a>
+      <a routerLink="/buscar">Buscar Donantes</a>
+      <a routerLink="/bancos">Contactar Banco De Sangre</a>
+      <a routerLink="/solicitudes">Solicitudes</a>
     </nav>
-    <div class="panel panel-default" id="solicitudes">
-      <div class="panel-heading">Panel heading without title</div>
-      <div class="panel-body" >
+    <div class="panel panel-default" id="solicitudes" *ngFor="let solici of solicitud">
+      <div class="panel-heading">{{solici.re}}
+        <button type="button" name="button">aceptar</button>
+      <button type="button" name="button">jodase</button>
+    </div>
+      <div class="panel-body">{{solici.men}}</div>
 
-      </div>
     </div>
   </body>
 </html>

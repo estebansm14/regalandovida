@@ -4,10 +4,14 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'buscarDonantes',
-    templateUrl: 'bancoDeSangre/buscarDonantes.html'
+    selector: 'buscarDonante',
+    templateUrl: 'public/bancoDeSangre/buscarDonante.html'
 })
 
-export class buscarDonantes{
-    private tipoSangre: any;
+export class buscarDonante{
+   nombreBanco: String;
+
+   constructor(){
+       this.nombreBanco = "estee es el nombre";
+   }
 }
