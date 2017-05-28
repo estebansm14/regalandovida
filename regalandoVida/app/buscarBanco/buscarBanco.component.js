@@ -32,7 +32,7 @@ var buscarBanco = (function () {
 buscarBanco = __decorate([
     core_1.Component({
         selector: 'buscarBanco',
-        templateUrl: 'bancoDeSangre/buscarBanco.html'
+        templateUrl: 'public/bancoDeSangre/buscarBanco.html'
     }),
     __metadata("design:paramtypes", [])
 ], buscarBanco);

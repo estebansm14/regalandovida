@@ -33,7 +33,7 @@ var solicitud = (function () {
 solicitud = __decorate([
     core_1.Component({
         selector: 'solicitud',
-        templateUrl: 'bancoDeSangre/solicitudes.html'
+        templateUrl: 'public/bancoDeSangre/solicitudes.html'
     }),
     __metadata("design:paramtypes", [])
 ], solicitud);

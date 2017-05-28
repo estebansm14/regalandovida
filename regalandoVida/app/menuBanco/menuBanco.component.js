@@ -12,13 +12,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var menuBanco = (function () {
     function menuBanco() {
+        this.encargado = String;
+        this.telefono = String;
+        this.direccion = String;
+        this.nombre = String;
     }
     return menuBanco;
 }());
 menuBanco = __decorate([
     core_1.Component({
         selector: 'menuBanco',
-        templateUrl: 'bancoDeSangre/menuBanco.html'
+        templateUrl: 'public/bancoDeSangre/menuBanco.html'
     })
 ], menuBanco);
 exports.menuBanco = menuBanco;

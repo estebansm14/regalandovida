@@ -22,7 +22,7 @@ var estadoReserva = (function () {
 estadoReserva = __decorate([
     core_1.Component({
         selector: 'estadoReserva',
-        templateUrl: 'bancoDeSangre/estadoReservas.html'
+        templateUrl: 'public/bancoDeSangre/estadoReservas.html'
     }),
     __metadata("design:paramtypes", [])
 ], estadoReserva);

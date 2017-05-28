@@ -22,7 +22,7 @@ var buscarDonante = (function () {
 buscarDonante = __decorate([
     core_1.Component({
         selector: 'buscarDonante',
-        templateUrl: 'bancoDeSangre/buscarDonante.html'
+        templateUrl: 'public/bancoDeSangre/buscarDonante.html'
     }),
     __metadata("design:paramtypes", [])
 ], buscarDonante);
