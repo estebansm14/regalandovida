@@ -15,9 +15,6 @@ var mongoose = require("mongoose");
 var bancoSangre = require('./model/bancoSangre').bancoSangre;
 var hospital = require('./model/hospital').hospital;
 var usuario = require('./model/usuario').usuario;
-/* app.get('/', function(req, res){
- *     res.sendfile('./public/index.html');
- * });*/
 app.get("/api/menuBanco", function(req,res){
     console.log("Consulta Informacion Banco Sangre");
     bancoSangre.find({idbanco:req.body.idbanco,pass:req.body.pass},"encargado telefono localizacion.direccion",function(err,docs){
