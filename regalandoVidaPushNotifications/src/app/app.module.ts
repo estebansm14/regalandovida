@@ -1,7 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { MyApp } from './app.component';
+import {MyApp } from './app.component';
 
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -13,7 +13,6 @@ import {NotificationsPage} from "../pages/notifications/notifications";
 @NgModule({
   declarations: [
     MyApp,
-
     HomePage,
     NotificationsPage,
     TabsPage
@@ -25,7 +24,6 @@ import {NotificationsPage} from "../pages/notifications/notifications";
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-
     HomePage,
     NotificationsPage,
     TabsPage

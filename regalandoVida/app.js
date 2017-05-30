@@ -124,7 +124,7 @@ app.post("/Imprimir", function(req,res){
 //app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'app')));
 //app.use('/banSangre', express.static(path.join(__dirname, 'public')));
 //app.use('/hospital', express.static(path.join(__dirname, 'public')));
 
