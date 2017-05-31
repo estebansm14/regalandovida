@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title> Estado Reservas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
+  <link rel="stylesheet" href="stylesheets/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="stylesheets/menu.css" type="text/css">
+  <link rel="stylesheet" href="stylesheets/estadoreservas.css">
+</head>
+
+<body >
+  <header>
+    <nav id="banco">
+      <a>Banco de sangre</a>
+    </nav>
+    <nav id="info">
+      <a> {{nombreBanco}}</a>
+      <a>  menu </a>
+    </nav>
+  </header>
+    <section id="body">
+  <h3 id="title">
+    ESTADO RESERVAS
+  </h3>
+  <img src = "logo.png" height="200" alt="300" style="float:right"/>
+  <nav id="menu">
+    <a routerLink="/menuBanco">Perfil</a>
+    <a routerLink="/estado">Estado Reservas</a>
+    <a routerLink="/buscar">Buscar Donantes</a>
+    <a routerLink="/bancos">Contactar Banco De Sangre</a>
+    <a routerLink="/solicitudes">Solicitudes</a>
+  </nav>
+       <table class="table table-striped" border="2px" id="tablas">
+          <tr>
+            <td>Tipo de Sangre</td>
+            <td> cantidad</td>
+            <td> editar</td>
+          </tr>
+          <tr>
+            <td>A+</td>
+            <td>{{cAmas}}</td>
+            <td><input #Amas ></td>
+          </tr>
+          <tr>
+            <td>A-</td>
+            <td>{{cAmen}}</td>
+            <td><input type="text" id="A-"></td>
+          </tr>
+          <tr>
+            <td>O+</td>
+            <td>{{cOmas}}</td>
+            <td><input type="text" id="O+"></td>
+          </tr>
+          <tr>
+            <td>O-</td>
+            <td>{{cOmen}}</td>
+            <td><input type="text" id="O-"></td>
+          </tr>
+          <tr>
+            <td>AB+</td>
+            <td>{{cABmas}}</td>
+            <td><input type="text" id="AB+"></td>
+          </tr>
+          <tr>
+            <td>AB-</td>
+            <td>{{cABmen}}</td>
+            <td><input type="text" id="AB-"></td>
+          </tr>
+      </table>
+  </section>
+  <button type="button" class="btn btn-danger" id="guardar" (click)="cambiar(Amas.value)">Guardar Cambios</button>
+</body>
+</html>

@@ -1,0 +1,69 @@
+ <!DOCTYPE html>
+<html lang="es" ng-app="buscar_banco_Angular">
+<head>
+  <meta charset="utf-8">
+  <title>Buscar bancos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
+  <link rel="stylesheet" href="stylesheets/menu.css" type="text/css">
+  <link rel="stylesheet" href="stylesheets/buscar_banco.css" type="text/css">
+</head>
+<body ng-controller="controlador">
+  <header>
+    <nav id="banco">
+      <a>Banco de sangre</a>
+    </nav>
+    <nav id="info">
+      <a>{{nombreBanco}}</a>
+      <a> menu</a>
+    </nav>
+  </header>
+
+    <h3 id="title"> BUSCAR BANCO DE SANGRE</h3>
+    <img src="bancoDeSangre/logo.png" height="200" alt="300" style="float:right"/>
+    <nav id="menu">
+      <a routerLink="/menuBanco">Perfil</a>
+      <a routerLink="/estado">Estado Reservas</a>
+      <a routerLink="/buscar">Buscar Donantes</a>
+      <a routerLink="/bancos">Contactar Banco De Sangre</a>
+      <a routerLink="/solicitudes">Solicitudes</a>
+    </nav>
+
+    <div id="bancos">
+      <select id="seleccion" >
+        <option *ngFor="let ban of banco">{{ban.nombre}}</option>
+      </select>
+      <button type="button" id="buscar"  >BUSCAR</button>
+
+      <table id="tabla" border="2px" class="table table-striped">
+        <tr>
+          <td>chek</td> <td>tipo</td><td>cantidad</td>
+        </tr>
+        <tr>
+          <td></td><td>A+</td><td>{{cAmas}}</td>
+        </tr>
+        <tr>
+          <td></td><td>A-</td><td>{{cAmen}}</td>
+        </tr>
+        <tr>
+          <td></td><td>O+</td><td>{{cOmas}}</td>
+        </tr>
+        <tr>
+          <td></td><td>O-</td><td>{{cOmen}}</td>
+        </tr>
+        <tr>
+          <td></td><td>AB+</td><td>{{cABmas}}</td>
+        </tr>
+        <tr>
+          <td></td><td>AB-</td><td>{{cABmen}}</td>
+        </tr>
+      </table>
+      <br>
+      <textarea name="textArea" id="textArea" rows="8" cols="80" (click)="limpiar()">{{texto}}</textarea>
+      <br>
+      <button type="button" class="btn btn-danger" id="solicitar" onclick="mensaje();"> solicitar </button>
+    </div>
+
+</body>
+</html>

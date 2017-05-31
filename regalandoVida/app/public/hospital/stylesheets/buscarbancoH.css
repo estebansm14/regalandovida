@@ -1,0 +1,67 @@
+#mbancos{
+  position: relative;
+  top: -250px;
+  left: 380px;
+  border: 3px ;
+  width: 680px;
+  height: 40px;
+}
+
+#nbancos{
+  width: 400px;
+  background-color: darkblue;
+  color: #FFFFFF;
+  height: 35px;
+  font-size: 20px;
+}
+#buscar{
+  width: 200px;
+  height: 35px;
+  background-color: darkblue;
+  float: right;
+  color: #FFFFFF;
+}
+
+#info_banco{
+   position: relative;
+   left: 380px;
+   top: -220px;
+   border: 2px solid black;
+   width: 300px;
+   height: 300px;
+}
+#info_banco a{
+  text-decoration: none;
+  color: black;
+  font-family: "Times New Roman";
+}
+#info_banco #nombre_banco{
+  font-size: 25px;
+  text-decoration: none;
+  font-family: "Times New Roman";
+}
+#tabla_tipos{
+  position: relative;
+  top: -520px;
+  left: 683px;
+  border: 2px solid black;
+  width: 380px;
+  height: 300px;
+}
+#textArea{
+    position: relative;
+    top: -540px;
+    left: 380px;
+    border: 2px solid black;
+    width: 683px;
+    height: auto;
+}
+#solicitar{
+    position: relative;
+    top: -520px;
+    left: 630px;
+    width: 200px;
+    height: 35px;
+    background-color: darkblue;
+    color: #FFFFFF;
+}
