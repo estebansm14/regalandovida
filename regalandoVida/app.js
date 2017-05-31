@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var path = require('path');
 var favicon = require('serve-favicon');
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 var logger = require('morgan');
 app.use(logger('dev'));
 var bodyParser = require('body-parser');
